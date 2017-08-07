@@ -1,0 +1,17 @@
+{
+  "name": "x-editable-file",
+  "main": "x-editable-file.js",
+  "authors": [
+    "Sukohi Kuhoh <capilano.sukohi@gmail.com>"
+  ],
+  "description": "A plugin for x-editable that manages file.",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

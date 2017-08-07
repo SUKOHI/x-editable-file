@@ -1,0 +1,56 @@
+<html>
+<head>
+    <meta name="csrf-token" content="ktF8ntV2h8gFvtSjH6Bu7iKZ5YPWohEC29ji9Giv" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+    <link href="../x-editable-file.css" rel="stylesheet"/>
+</head>
+<body>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">x-editable: File input</h3>
+        </div>
+        <div class="panel-body">
+            <a href="#" id="file" data-type="file" data-pk="1" data-value="filename.jpg"></a>
+        </div>
+    </div>
+</div>
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script src="../x-editable-file.js"></script>
+<script>
+
+    // for Laravel. Remove here if you don't need
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $('#file').editable({
+        url: '/editable_file_ajax',
+        type: 'file',
+        pk: 1,
+        name: 'upload_file',
+        method: 'POST',  // or PUT
+        buttonLabel: 'Chose one!',
+        maxFilenameLength: 50,
+        allowDelete: true,
+        deleteLabel: 'Delete'
+    });
+
+</script>
+</body>
+</html>
