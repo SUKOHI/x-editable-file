@@ -81,8 +81,6 @@
                 return;
             }
             this.$input.filter('[name="file"]').val(value.file);
-            this.$input.filter('[name="caption"]').val(value.caption);
-            this.$input.filter('[name="url"]').val(value.url);
         },
         input2value: function() {
             return this.getFullFilename(this.$input.filter('[name="file"]').val());
@@ -91,6 +89,7 @@
 
             var self = this;
             this.withDeleting = false;
+            $(this.options.scope).editable('option', 'savenochange', true );
             $(this.options.scope).editable('option', 'ajaxOptions', {
                 dataType: 'json',
                 contentType: false,
