@@ -122,6 +122,13 @@
 
                 formData.append('pk', $(self.options.scope).data('pk'));
                 formData.append('name', self.options.name);
+
+                for(var key in self.options.extraParams) {
+
+                    formData.append(key, self.options.extraParams[key]);
+
+                }
+
                 return formData;
 
             });
@@ -183,7 +190,8 @@
         buttonLabel: 'Chose file',
         maxFilenameLength: 50,
         allowDelete: true,
-        deleteLabel: 'Delete'
+        deleteLabel: 'Delete',
+        extraParams: {}
     });
 
     $.fn.editabletypes.file = File;
