@@ -102,17 +102,15 @@
 
                 }
             });
-            var inputName =  this.options.name;
             $(this.options.scope).editable('option', 'params', function(){
 
                 var form = self.$tpl.closest('form').get(0);
                 var formData = new FormData(form);
                 var deleteFlag = formData.get('delete');
-                formData.delete('file');
 
-                if(self.fileSelected && deleteFlag == null) {
+                if(!self.fileSelected || deleteFlag == 1) {
 
-                    formData.append(inputName, self.$input.filter('[name="file"]')[0].files[0]);
+                    formData.delete('file');
 
                 }
 
@@ -123,11 +121,10 @@
                 }
 
                 formData.append('pk', $(self.options.scope).data('pk'));
+                formData.append('name', self.options.name);
                 return formData;
 
             });
-
-            this.$input.filter('[name="'+ inputName +'"]').focus();
 
         },
         getFullFilename: function(path) {
