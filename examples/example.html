@@ -49,8 +49,11 @@
         maxFilenameLength: 50,
         allowDelete: true,
         deleteLabel: 'Delete',
-        extraParams: {
-            key: 'value'
+        formData: function(formData) {
+
+            formData.append('your_key', 'your_value');
+            return formData;
+
         }
     });
 

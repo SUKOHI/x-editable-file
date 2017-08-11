@@ -95,7 +95,7 @@
                 contentType: false,
                 processData: false,
                 type: this.options.method,
-                success: function() {
+                success: function(response) {
 
                     self.fileSelected = false;
 
@@ -122,10 +122,8 @@
                 formData.append('pk', $(self.options.scope).data('pk'));
                 formData.append('name', self.options.name);
 
-                for(var key in self.options.extraParams) {
-
-                    formData.append(key, self.options.extraParams[key]);
-
+                if(typeof self.options.formData === 'function') {
+                    formData = self.options.formData.call(self.options.scope, formData);
                 }
 
                 return formData;
@@ -190,7 +188,7 @@
         maxFilenameLength: 50,
         allowDelete: true,
         deleteLabel: 'Delete',
-        extraParams: {}
+        formData: null
     });
 
     $.fn.editabletypes.file = File;
