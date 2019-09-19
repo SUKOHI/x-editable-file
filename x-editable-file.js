@@ -44,15 +44,24 @@
                 self.setFilename(filename);
                 self.fileSelected = true;
             });
-            this.$tpl.find('button').text(this.options.buttonLabel);
+
+            if(this.options.onlyDelete) {
+
+                this.$tpl.find('button').remove();
+                this.$tpl.closest('.editable-filename').remove();
+                this.options.allowDelete = true;
+
+            } else {
+
+                this.$tpl.find('button').text(this.options.buttonLabel);
+
+            }
 
             if(this.options.allowDelete) {
 
                 this.$tpl.parent().append(this.getDeleteHtml());
 
             }
-
-            var defaultFilename = $(this.options.scope).data('value');
 
             if($.fn.editableform.engine === 'bs3') {
                 this.$tpl.find('button').addClass('btn btn-default');
@@ -187,6 +196,7 @@
         buttonLabel: 'Chose file',
         maxFilenameLength: 50,
         allowDelete: true,
+        onlyDelete: false,
         deleteLabel: 'Delete',
         formData: null
     });
