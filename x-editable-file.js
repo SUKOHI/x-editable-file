@@ -47,8 +47,7 @@
 
             if(this.options.onlyDelete) {
 
-                this.$tpl.find('button').remove();
-                this.$tpl.closest('.editable-filename').remove();
+                this.$tpl.closest('button, .editable-filename, .editable-file').css('display', 'none');
                 this.options.allowDelete = true;
 
             } else {
